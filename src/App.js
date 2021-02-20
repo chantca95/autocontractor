@@ -10,13 +10,14 @@ import {
   Grid,
   Paper,
   TextField,
-  InputAdornment
+  InputAdornment,
+  MenuItem,
 } from '@material-ui/core';
 import Docxtemplater from "docxtemplater"
 import JSzip from "jszip"
 import JSzipUtils from "jszip-utils"
 import { saveAs } from "file-saver"
-import template from './IndependentContractorAgreement.docx'
+import template from './IndependentContractorAgreement2.docx'
 import { getDateWithoutDay } from './utils.js';
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,6 +33,17 @@ const useStyles = makeStyles({
     padding: 16
   }
 });
+
+const payers = [
+  {
+    value: 'The Contractor',
+    label: 'The Contractor',
+  },
+  {
+    value: 'The Contractee',
+    label: 'The Contractee',
+  }
+]
 
 function App() {
   const [inputs, setInputs] = useState({});
@@ -138,7 +150,7 @@ function App() {
         mimeType:
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       }); //Output the document using Data-URI
-      saveAs(out, "output.docx");
+      saveAs(out, "contract.docx");
     });
   };
 
@@ -363,13 +375,21 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={inputs.contractPayerName}
                 name="contractPayerName"
                 id="contractPayerName"
-                label="Contract Payer Name"
+                select
+                label="Party Paying for Contract"
                 fullWidth
                 margin="dense"
                 onChange={e => onChangeForField(e)}
-              />
+              >
+                {payers.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
