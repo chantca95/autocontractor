@@ -160,13 +160,93 @@ function App() {
           Fill in the required fields, we'll take care of the rest!
         </Typography>
       </Box>
-
       <Paper className={classes.paper} elevation={3}>
         <form noValidate autoComplete="off">
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography variant="h6" align="center" gutterBottom>
-                Your/your company details (In v1 the contractee is a company)
+                Contractor details (You/Your Company)
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="contractorName"
+                id="contractorName"
+                label="Name"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="contractorPhone"
+                id="contractorPhone"
+                label="Phone"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="contractorEmail"
+                id="contractorEmail"
+                label="Email"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="contractorAddress"
+                id="contractorAddress"
+                label="Address"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="contractorNricNumber"
+                id="contractorNricNumber"
+                label="NRIC Number"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="contractorContactName"
+                id="contractorContactName"
+                label="POC Name"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="contractorSigningParty"
+                id="contractorSigningParty"
+                label="Signing Party"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+          </Grid>
+        </form>
+      </Paper>
+      <Paper className={classes.paper} elevation={3}>
+        <form noValidate autoComplete="off">
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <Typography variant="h6" align="center" gutterBottom>
+                Contractee details (The Client)
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -254,88 +334,6 @@ function App() {
                 name="contracteeSigningPartyDesignation"
                 id="contracteeSigningPartyDesignation"
                 label="Signing Party Designation"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-          </Grid>
-        </form>
-      </Paper>
-
-      <Paper className={classes.paper} elevation={3}>
-        <form noValidate autoComplete="off">
-          <Grid container spacing={1}>
-            <Grid item xs={12}>
-              <Typography variant="h6" align="center" gutterBottom>
-                Contractor details (In v1 the contractor is an individual)
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="contractorName"
-                id="contractorName"
-                label="Name"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="contractorPhone"
-                id="contractorPhone"
-                label="Phone"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="contractorEmail"
-                id="contractorEmail"
-                label="Email"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="contractorAddress"
-                id="contractorAddress"
-                label="Address"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="contractorNricNumber"
-                id="contractorNricNumber"
-                label="NRIC Number"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="contractorContactName"
-                id="contractorContactName"
-                label="POC Name"
-                fullWidth
-                margin="dense"
-                onChange={e => onChangeForField(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="contractorSigningParty"
-                id="contractorSigningParty"
-                label="Signing Party"
                 fullWidth
                 margin="dense"
                 onChange={e => onChangeForField(e)}
