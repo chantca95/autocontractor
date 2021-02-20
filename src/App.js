@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   paper: {
     marginTop: 24,
     padding: 16,
-    width: '60%',
+    width: '70%',
     margin: 'auto', 
   },
   modal: {
@@ -152,12 +152,14 @@ function App() {
           Please fill in all required fields
         </DialogContent>
       </Dialog>
-      <Typography variant="h3" align="center" gutterBottom color="primary">
-        Independent Contractor Agreement
-      </Typography>
-      <Typography variant="h6" align="center" gutterBottom>
-        Fill in the required fields, we'll take care of the rest!
-      </Typography>
+      <Box margin={2}>
+        <Typography variant="h3" align="center" gutterBottom color="primary">
+          Independent Contractor Agreement
+        </Typography>
+        <Typography variant="h6" align="center" gutterBottom>
+          Fill in the required fields, we'll take care of the rest!
+        </Typography>
+      </Box>
 
       <Paper className={classes.paper} elevation={3}>
         <form noValidate autoComplete="off">
@@ -177,7 +179,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contracteePhone"
                 id="contracteePhone"
@@ -187,7 +189,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contracteeEmail"
                 id="contracteeEmail"
@@ -207,7 +209,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contracteeCountry"
                 id="contracteeCountry"
@@ -217,7 +219,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contracteeRegistrationNumber"
                 id="contracteeRegistrationNumber"
@@ -279,7 +281,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contractorPhone"
                 id="contractorPhone"
@@ -289,7 +291,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="contractorEmail"
                 id="contractorEmail"
@@ -371,7 +373,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="amount"
                 id="amount"
@@ -384,7 +386,7 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 name="loadingPeriod"
                 id="loadingPeriod"
