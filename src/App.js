@@ -46,7 +46,7 @@ const payers = [
 ]
 
 function App() {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({DATE: getDateWithoutDay()});
   const [dialogOpen, setDialogOpen] = useState(false)
 
   const classes = useStyles();
@@ -59,12 +59,11 @@ function App() {
     const key = event.target.name
     const value = event.target.value
     setInputs(state => ({...state,[key]:value}))
-    console.log(inputs)
   }
 
   const checkAllInputs = () => {
     console.log(Object.keys(inputs).length)
-    if (Object.keys(inputs).length === 20) {
+    if (Object.keys(inputs).length === 21) {
       generateDocument()
     } else {
       setDialogOpen(true)
@@ -85,34 +84,35 @@ function App() {
       }
       var zip = new JSzip(content);
       var doc = new Docxtemplater().loadZip(zip);
-      doc.setData({
-        // Values are the camelCase version of these placeholders
-        // contractee details
-        CONTRACTEE_NAME: inputs.contracteeName,
-        CONTRACTEE_PHONE: inputs.contracteePhone,
-        CONTRACTEE_EMAIL: inputs.contracteeEmail,
-        CONTRACTEE_ADDRESS: inputs.contracteeAddress,
-        CONTRACTEE_COUNTRY: inputs.contracteeCountry,
-        CONTRACTEE_REGISTRATION_NUMBER: inputs.contracteeRegistrationNumber,
-        CONTRACTEE_CONTACT_NAME: inputs.contracteeContactName,
-        CONTRACTEE_SIGNING_PARTY: inputs.contracteeSigningParty,
-        CONTRACTEE_SIGNING_PARTY_DESIGNATION: inputs.contracteeSigningPartyDesignation,
-        // contractor details
-        CONTRACTOR_NAME: inputs.contractorName,
-        CONTRACTOR_PHONE: inputs.contractorPhone,
-        CONTRACTOR_EMAIL: inputs.contractorEmail,
-        CONTRACTOR_ADDRESS: inputs.contractorAddress,
-        CONTRACTOR_NRIC_NUMBER: inputs.contractorNricNumber,
-        CONTRACTOR_CONTACT_NAME: inputs.contractorContactName,
-        CONTRACTOR_SIGNING_PARTY: inputs.contractorSigningParty,
-        // other details
-        PROJECT_NAME: inputs.projectName,
-        CONTRACT_PAYER_NAME: inputs.contractPayerName,
-        LOADING_PERIOD: inputs.loadingPeriod,
-        AMOUNT: inputs.amount,
-        // dynamically obtained without user input
-        DATE: getDateWithoutDay(),
-      });
+      doc.setData(
+        // // Values are the camelCase version of these placeholders
+        // // contractee details
+        // CONTRACTEE_NAME: inputs.CONTRACTEE_NAME,
+        // CONTRACTEE_PHONE: inputs.CONTRACTEE_PHONE,
+        // CONTRACTEE_EMAIL: inputs.CONTRACTEE_EMAIL,
+        // CONTRACTEE_ADDRESS: inputs.CONTRACTEE_ADDRESS,
+        // CONTRACTEE_COUNTRY: inputs.CONTRACTEE_COUNTRY,
+        // CONTRACTEE_REGISTRATION_NUMBER: inputs.CONTRACTEE_REGISTRATION_NUMBER,
+        // CONTRACTEE_CONTACT_NAME: inputs.CONTRACTEE_CONTACT_NAME,
+        // CONTRACTEE_SIGNING_PARTY: inputs.CONTRACTEE_SIGNING_PARTY,
+        // CONTRACTEE_SIGNING_PARTY_DESIGNATION: inputs.CONTRACTEE_SIGNING_PARTY_DESIGNATION,
+        // // contractor details
+        // CONTRACTOR_NAME: inputs.CONTRACTOR_NAME,
+        // CONTRACTOR_PHONE: inputs.CONTRACTOR_PHONE,
+        // CONTRACTOR_EMAIL: inputs.CONTRACTOR_EMAIL,
+        // CONTRACTOR_ADDRESS: inputs.CONTRACTOR_ADDRESS,
+        // CONTRACTOR_NRIC_NUMBER: inputs.CONTRACTOR_NRIC_NUMBER,
+        // CONTRACTOR_CONTACT_NAME: inputs.CONTRACTOR_CONTACT_NAME,
+        // CONTRACTOR_SIGNING_PARTY: inputs.CONTRACTOR_SIGNING_PARTY,
+        // // other details
+        // PROJECT_NAME: inputs.PROJECT_NAME,
+        // CONTRACT_PAYER_NAME: inputs.CONTRACT_PAYER_NAME,
+        // LOADING_PERIOD: inputs.LOADING_PERIOD,
+        // AMOUNT: inputs.AMOUNT,
+        // // dynamically obtained without user input, yet allow user to change
+        // DATE: inputs.DATE,
+        inputs
+      );
       try {
         // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
         doc.render();
@@ -182,8 +182,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contractorName"
-                id="contractorName"
+                name="CONTRACTOR_NAME"
+                id="CONTRACTOR_NAME"
                 label="Name"
                 fullWidth
                 margin="dense"
@@ -192,8 +192,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contractorPhone"
-                id="contractorPhone"
+                name="CONTRACTOR_PHONE"
+                id="CONTRACTOR_PHONE"
                 label="Phone"
                 fullWidth
                 margin="dense"
@@ -202,8 +202,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contractorEmail"
-                id="contractorEmail"
+                name="CONTRACTOR_EMAIL"
+                id="CONTRACTOR_EMAIL"
                 label="Email"
                 fullWidth
                 margin="dense"
@@ -212,8 +212,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contractorAddress"
-                id="contractorAddress"
+                name="CONTRACTOR_ADDRESS"
+                id="CONTRACTOR_ADDRESS"
                 label="Address"
                 fullWidth
                 margin="dense"
@@ -222,8 +222,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contractorNricNumber"
-                id="contractorNricNumber"
+                name="CONTRACTOR_NRIC_NUMBER"
+                id="CONTRACTOR_NRIC_NUMBER"
                 label="NRIC Number"
                 fullWidth
                 margin="dense"
@@ -232,8 +232,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contractorContactName"
-                id="contractorContactName"
+                name="CONTRACTOR_CONTACT_NAME"
+                id="CONTRACTOR_CONTACT_NAME"
                 label="POC Name"
                 fullWidth
                 margin="dense"
@@ -242,8 +242,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contractorSigningParty"
-                id="contractorSigningParty"
+                name="CONTRACTOR_SIGNING_PARTY"
+                id="CONTRACTOR_SIGNING_PARTY"
                 label="Signing Party"
                 fullWidth
                 margin="dense"
@@ -263,8 +263,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contracteeName"
-                id="contracteeName"
+                name="CONTRACTEE_NAME"
+                id="CONTRACTEE_NAME"
                 label="Name"
                 fullWidth
                 margin="dense"
@@ -273,8 +273,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contracteePhone"
-                id="contracteePhone"
+                name="CONTRACTEE_PHONE"
+                id="CONTRACTEE_PHONE"
                 label="Phone"
                 fullWidth
                 margin="dense"
@@ -283,8 +283,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contracteeEmail"
-                id="contracteeEmail"
+                name="CONTRACTEE_EMAIL"
+                id="CONTRACTEE_EMAIL"
                 label="Email"
                 fullWidth
                 margin="dense"
@@ -293,8 +293,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contracteeAddress"
-                id="contracteeAddress"
+                name="CONTRACTEE_ADDRESS"
+                id="CONTRACTEE_ADDRESS"
                 label="Address"
                 fullWidth
                 margin="dense"
@@ -303,8 +303,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contracteeCountry"
-                id="contracteeCountry"
+                name="CONTRACTEE_COUNTRY"
+                id="CONTRACTEE_COUNTRY"
                 label="Country"
                 fullWidth
                 margin="dense"
@@ -313,8 +313,8 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="contracteeRegistrationNumber"
-                id="contracteeRegistrationNumber"
+                name="CONTRACTEE_REGISTRATION_NUMBER"
+                id="CONTRACTEE_REGISTRATION_NUMBER"
                 label="Registration Number"
                 fullWidth
                 margin="dense"
@@ -323,8 +323,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contracteeContactName"
-                id="contracteeContactName"
+                name="CONTRACTEE_CONTACT_NAME"
+                id="CONTRACTEE_CONTACT_NAME"
                 label="POC Name"
                 fullWidth
                 margin="dense"
@@ -333,8 +333,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contracteeSigningParty"
-                id="contracteeSigningParty"
+                name="CONTRACTEE_SIGNING_PARTY"
+                id="CONTRACTEE_SIGNING_PARTY"
                 label="Signing Party"
                 fullWidth
                 margin="dense"
@@ -343,8 +343,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="contracteeSigningPartyDesignation"
-                id="contracteeSigningPartyDesignation"
+                name="CONTRACTEE_SIGNING_PARTY_DESIGNATION"
+                id="CONTRACTEE_SIGNING_PARTY_DESIGNATION"
                 label="Signing Party Designation"
                 fullWidth
                 margin="dense"
@@ -365,8 +365,8 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="projectName"
-                id="projectName"
+                name="PROJECT_NAME"
+                id="PROJECT_NAME"
                 label="Project/Contract Name"
                 fullWidth
                 margin="dense"
@@ -375,9 +375,9 @@ function App() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                value={inputs.contractPayerName}
-                name="contractPayerName"
-                id="contractPayerName"
+                value={inputs.CONTRACT_PAYER_NAME}
+                name="CONTRACT_PAYER_NAME"
+                id="CONTRACT_PAYER_NAME"
                 select
                 label="Party Paying for Contract"
                 fullWidth
@@ -391,11 +391,11 @@ function App() {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={4}>
               <TextField
-                name="amount"
-                id="amount"
-                label="Contract Amount"
+                name="AMOUNT"
+                id="AMOUNT"
+                label="Contract AMOUNT"
                 fullWidth
                 margin="dense"
                 InputProps={{
@@ -404,11 +404,22 @@ function App() {
                 onChange={e => onChangeForField(e)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={4}>
               <TextField
-                name="loadingPeriod"
-                id="loadingPeriod"
+                name="LOADING_PERIOD"
+                id="LOADING_PERIOD"
                 label="Loading Period"
+                fullWidth
+                margin="dense"
+                onChange={e => onChangeForField(e)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                value={inputs.DATE}
+                name="DATE"
+                id="DATE"
+                label="Creation Date"
                 fullWidth
                 margin="dense"
                 onChange={e => onChangeForField(e)}
